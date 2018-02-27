@@ -8,13 +8,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel : ScoreViewModel by lazy {
-        ViewModelProviders.of(this).get(ScoreViewModel::class.java)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val applicationContext = this.applicationContext as TeamApplication
+        val dependencies = applicationContext.getDependencies()
+        val factory = dependencies.viewMoldelFactory
+
+        val viewModel = ViewModelProviders.of(this, factory).get(TeamViewModel::class.java)
 
         btnReset.setOnClickListener {
             viewModel.resetScoreTeam()
@@ -45,11 +47,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.scoreTeamA.observe(this, Observer {
-            value -> scoreTeamA.text = value.toString()
+            value -> scoreTeamA.text = value!!.score.toString()
         })
 
         viewModel.scoreTeamB.observe(this, Observer {
-            score -> scoreTeamB.text = score.toString()
+            value -> scoreTeamB.text = value!!.score.toString()
         })
     }
 }

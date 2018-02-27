@@ -1,8 +1,10 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
+
 
 android {
     compileSdkVersion 26
@@ -38,11 +40,11 @@ dependencies {
     // alternatively, just LiveData
     implementation "android.arch.lifecycle:livedata:1.1.0"
 
-    annotationProcessor "android.arch.lifecycle:compiler:1.1.0"
+    kapt "android.arch.lifecycle:compiler:1.1.0"
 
     // Room (use 1.1.0-alpha2 for latest alpha)
     implementation "android.arch.persistence.room:runtime:1.0.0"
-    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+    kapt "android.arch.persistence.room:compiler:1.0.0"
 
     // Paging
     implementation "android.arch.paging:runtime:1.0.0-alpha5"
