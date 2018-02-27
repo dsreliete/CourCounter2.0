@@ -25,6 +25,6 @@ class Dependencies(private val context : Context) {
     }
 
     val viewMoldelFactory : TeamViewModelFactory by lazy {
-        TeamViewModelFactory(wordRepository, IOExecutor)
+        TeamViewModelFactory(wordRepository)
     }
 }

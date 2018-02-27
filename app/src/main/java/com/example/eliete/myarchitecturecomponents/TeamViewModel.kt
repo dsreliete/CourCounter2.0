@@ -2,12 +2,11 @@ package com.example.eliete.myarchitecturecomponents
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import java.util.concurrent.Executor
 
 /**
  * Created by eliete on 2/22/18.
  */
-class TeamViewModel(private val teamRepository: DataRepository, private val ioExecutor: Executor) : ViewModel() {
+class TeamViewModel(private val teamRepository: DataRepository) : ViewModel() {
 
     private var teamA : Team? = getTeamScore(1)
     private var teamB : Team? = getTeamScore(2)
@@ -60,22 +59,14 @@ class TeamViewModel(private val teamRepository: DataRepository, private val ioEx
     }
 
     private fun setScore(team : Team) {
-        ioExecutor.execute({
-            teamRepository.insertScoreTeam(team)
-        })
+        teamRepository.insertScoreTeam(team)
     }
 
     private fun updateScore(team : Team) {
-        ioExecutor.execute({
-            teamRepository.updateTeam(team)
-        })
+        teamRepository.updateTeam(team)
     }
 
     private fun getTeamScore(id : Int) : Team? {
-        var team : Team? = null
-        ioExecutor.execute({
-            team = teamRepository.getScoreTeam(id)
-        })
-        return team
+        return teamRepository.getScoreTeam(id)
     }
 }

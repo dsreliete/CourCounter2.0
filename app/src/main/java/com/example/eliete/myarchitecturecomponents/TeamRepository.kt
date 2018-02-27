@@ -15,10 +15,16 @@ class TeamRepository internal constructor(private val teamDao: TeamDao,
     }
 
     override fun getScoreTeam(id: Int): Team? {
-        return teamDao.getScoreTeam(id)
+        var team : Team? = null
+        ioExecutor.execute({
+            team = teamDao.getScoreTeam(id)
+        })
+        return team
     }
 
     override fun updateTeam(team: Team) {
-        return teamDao.updateTeam(team)
+        ioExecutor.execute({
+            teamDao.updateTeam(team)
+        })
     }
 }
