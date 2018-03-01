@@ -1,7 +1,8 @@
-package com.example.eliete.myarchitecturecomponents
+package com.example.eliete.myarchitecturecomponents.data.model
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import com.example.eliete.myarchitecturecomponents.data.DataRepository
 
 /**
  * Created by eliete on 2/22/18.
@@ -49,16 +50,16 @@ class TeamViewModel(private val teamRepository: DataRepository) : ViewModel() {
     private fun initializeTeamA() {
         teamA = Team(1, 0)
         scoreTeamA.postValue(teamA)
-        setScore(teamA!!)
+        saveScore(teamA!!)
     }
 
     private fun initializeTeamB() {
         teamB = Team(2, 0)
         scoreTeamB.postValue(teamB)
-        setScore(teamB!!)
+        saveScore(teamB!!)
     }
 
-    private fun setScore(team : Team) {
+    private fun saveScore(team : Team) {
         teamRepository.insertScoreTeam(team)
     }
 

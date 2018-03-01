@@ -1,7 +1,8 @@
-package com.example.eliete.myarchitecturecomponents
+package com.example.eliete.myarchitecturecomponents.data.model
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
+import com.example.eliete.myarchitecturecomponents.data.DataRepository
 
 /**
  * Created by eliete on 2/27/18.

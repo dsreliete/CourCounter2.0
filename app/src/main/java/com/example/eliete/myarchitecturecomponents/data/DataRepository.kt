@@ -1,4 +1,6 @@
-package com.example.eliete.myarchitecturecomponents
+package com.example.eliete.myarchitecturecomponents.data
+
+import com.example.eliete.myarchitecturecomponents.data.model.Team
 
 /**
  * Created by eliete on 2/27/18.

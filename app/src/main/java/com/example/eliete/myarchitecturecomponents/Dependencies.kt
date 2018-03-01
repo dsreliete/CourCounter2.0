@@ -2,6 +2,10 @@ package com.example.eliete.myarchitecturecomponents
 
 import android.arch.persistence.room.Room
 import android.content.Context
+import com.example.eliete.myarchitecturecomponents.data.DataRepository
+import com.example.eliete.myarchitecturecomponents.data.TeamRepository
+import com.example.eliete.myarchitecturecomponents.data.model.TeamViewModelFactory
+import com.example.eliete.myarchitecturecomponents.data.db.TeamRoomDatabase
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 

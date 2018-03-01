@@ -1,5 +1,8 @@
-package com.example.eliete.myarchitecturecomponents
+package com.example.eliete.myarchitecturecomponents.data
 
+import com.example.eliete.myarchitecturecomponents.data.DataRepository
+import com.example.eliete.myarchitecturecomponents.data.model.Team
+import com.example.eliete.myarchitecturecomponents.data.db.TeamDao
 import java.util.concurrent.Executor
 
 /**

@@ -2,6 +2,9 @@ package com.example.eliete.myarchitecturecomponents
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import android.arch.lifecycle.Observer
+import com.example.eliete.myarchitecturecomponents.data.DataRepository
+import com.example.eliete.myarchitecturecomponents.data.model.Team
+import com.example.eliete.myarchitecturecomponents.data.model.TeamViewModel
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito
@@ -18,8 +21,8 @@ class TeamTest {
     @Test
     fun verifyScoreTeamInitialization() {
 
-        val teamA = Team(1,0)
-        val teamB = Team(2,0)
+        val teamA = Team(1, 0)
+        val teamB = Team(2, 0)
 
         val repository = Mockito.mock(DataRepository::class.java).apply {
             Mockito.`when`(getScoreTeam(1)).then {
@@ -43,11 +46,11 @@ class TeamTest {
 
     @Test
     fun verifyScoreTeamA_afterInsert3Points() {
-        val teamA = Team(1,3)
+        val teamA = Team(1, 3)
 
         val repository = Mockito.mock(DataRepository::class.java).apply {
             Mockito.`when`(getScoreTeam(1)).then {
-                Team(1,0)
+                Team(1, 0)
             }
         }
 
@@ -63,11 +66,11 @@ class TeamTest {
 
     @Test
     fun verifyScoreTeamB_afterInsert2Points() {
-        val teamB = Team(2,2)
+        val teamB = Team(2, 2)
 
         val repository = Mockito.mock(DataRepository::class.java).apply {
             Mockito.`when`(getScoreTeam(2)).then {
-                Team(2,0)
+                Team(2, 0)
             }
         }
 
@@ -83,11 +86,11 @@ class TeamTest {
 
     @Test
     fun verifyScoreTeamA_afterInsertSecondPoint() {
-        val teamA = Team(1,5)
+        val teamA = Team(1, 5)
 
         val repository = Mockito.mock(DataRepository::class.java).apply {
             Mockito.`when`(getScoreTeam(1)).then {
-                Team(1,0)
+                Team(1, 0)
             }
         }
 
@@ -104,11 +107,11 @@ class TeamTest {
 
     @Test
     fun verifyScoreTeamB_afterInsertSecondPoint() {
-        val teamB = Team(2,4)
+        val teamB = Team(2, 4)
 
         val repository = Mockito.mock(DataRepository::class.java).apply {
             Mockito.`when`(getScoreTeam(2)).then {
-                Team(2,0)
+                Team(2, 0)
             }
         }
 
@@ -125,21 +128,23 @@ class TeamTest {
 
     @Test
     fun verifyResetScore() {
-        val teamA = Team(1,0)
-        val teamB = Team(2,0)
+        val teamA = Team(1, 0)
+        val teamB = Team(2, 0)
 
         val repository = Mockito.mock(DataRepository::class.java).apply {
             Mockito.`when`(getScoreTeam(1)).then {
-                Team(1,52)
+                Team(1, 52)
             }
 
             Mockito.`when`(getScoreTeam(2)).then {
-                Team(2,78)
+                Team(2, 78)
             }
         }
 
-        val viewModel = TeamViewModel(repository)
-        viewModel.resetScoreTeam()
+        val viewModel = TeamViewModel(repository).apply {
+            resetScoreTeam()
+        }
+
         val observer: Observer<Team> = Mockito.mock(Observer::class.java) as Observer<Team>
 
         viewModel.scoreTeamA.observeForever(observer)

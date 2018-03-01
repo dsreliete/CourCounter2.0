@@ -1,4 +1,4 @@
-package com.example.eliete.myarchitecturecomponents
+package com.example.eliete.myarchitecturecomponents.data.model
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey

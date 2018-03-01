@@ -11,7 +11,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context="com.example.eliete.myarchitecturecomponents.MainActivity"
+        tools:context="com.example.eliete.myarchitecturecomponents.ui.MainActivity"
         tools:layout_editor_absoluteY="81dp">
 
         <TextView
