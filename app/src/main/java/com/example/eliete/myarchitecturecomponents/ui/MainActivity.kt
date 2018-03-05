@@ -1,13 +1,14 @@
 package com.example.eliete.myarchitecturecomponents.ui
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.Toast
 import com.example.eliete.myarchitecturecomponents.R
 import com.example.eliete.myarchitecturecomponents.TeamApplication
+import com.example.eliete.myarchitecturecomponents.data.model.ToastMessage
 import com.example.eliete.myarchitecturecomponents.data.model.TeamViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -38,6 +39,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
 
         setViewListeners()
+
+        viewModel.message.observe(this, ToastMessage.ToastObserver {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        })
 
         viewModel.scoreTeamA.observe(this, Observer {
             value -> scoreTeamA.text = value!!.score.toString()

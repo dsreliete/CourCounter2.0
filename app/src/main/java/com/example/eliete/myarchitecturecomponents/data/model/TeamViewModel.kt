@@ -13,6 +13,7 @@ class TeamViewModel(private val teamRepository: DataRepository) : ViewModel() {
     private var teamB : Team? = getTeamScore(2)
     val scoreTeamA : MutableLiveData<Team> = MutableLiveData()
     val scoreTeamB : MutableLiveData<Team> = MutableLiveData()
+    val message : ToastMessage = ToastMessage()
 
     init {
         if (teamA == null) {
@@ -30,6 +31,7 @@ class TeamViewModel(private val teamRepository: DataRepository) : ViewModel() {
             scoreTeamA.postValue(newScore)
             updateScore(newScore)
             teamA = newScore
+
         }
     }
 
@@ -45,6 +47,7 @@ class TeamViewModel(private val teamRepository: DataRepository) : ViewModel() {
     fun resetScoreTeam() {
         initializeTeamA()
         initializeTeamB()
+        message.postValue("reseted Team score")
     }
 
     private fun initializeTeamA() {
@@ -65,6 +68,7 @@ class TeamViewModel(private val teamRepository: DataRepository) : ViewModel() {
 
     private fun updateScore(team : Team) {
         teamRepository.updateTeam(team)
+        message.postValue("updated Team score")
     }
 
     private fun getTeamScore(id : Int) : Team? {
