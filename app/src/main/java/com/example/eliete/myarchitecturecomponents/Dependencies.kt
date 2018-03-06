@@ -14,12 +14,12 @@ import java.util.concurrent.Executors
  */
 class Dependencies(private val context : Context) {
 
-    private val wordRepository : DataRepository by lazy {
+    private val repository: DataRepository by lazy {
         TeamRepository(roomDatabase.teamDao(), IOExecutor)
     }
 
     private val roomDatabase : TeamRoomDatabase by lazy {
-        Room.databaseBuilder(context.applicationContext,
+        Room.databaseBuilder(context,
                 TeamRoomDatabase::class.java, "score_database")
                 .build()
     }
@@ -29,6 +29,6 @@ class Dependencies(private val context : Context) {
     }
 
     val viewMoldelFactory : TeamViewModelFactory by lazy {
-        TeamViewModelFactory(wordRepository)
+        TeamViewModelFactory(repository)
     }
 }

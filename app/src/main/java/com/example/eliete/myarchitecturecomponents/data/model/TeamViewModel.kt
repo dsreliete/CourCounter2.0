@@ -28,17 +28,16 @@ class TeamViewModel(private val teamRepository: DataRepository) : ViewModel() {
     fun updateTeamA(value : Int) {
         teamA?.let {
             val newScore = it.copy(score = it.score + value)
-            scoreTeamA.postValue(newScore)
+            scoreTeamA.setValue(newScore)
             updateScore(newScore)
             teamA = newScore
-
         }
     }
 
     fun updateTeamB(value : Int) {
         teamB?.let {
             val newScore = it.copy(score = it.score + value)
-            scoreTeamB.postValue(newScore)
+            scoreTeamB.setValue(newScore)
             updateScore(newScore)
             teamB = newScore
         }
@@ -47,18 +46,18 @@ class TeamViewModel(private val teamRepository: DataRepository) : ViewModel() {
     fun resetScoreTeam() {
         initializeTeamA()
         initializeTeamB()
-        message.postValue("reseted Team score")
+        message.setValue("reseted Team score")
     }
 
     private fun initializeTeamA() {
         teamA = Team(1, 0)
-        scoreTeamA.postValue(teamA)
+        scoreTeamA.setValue(teamA)
         saveScore(teamA!!)
     }
 
     private fun initializeTeamB() {
         teamB = Team(2, 0)
-        scoreTeamB.postValue(teamB)
+        scoreTeamB.setValue(teamB)
         saveScore(teamB!!)
     }
 
@@ -68,7 +67,7 @@ class TeamViewModel(private val teamRepository: DataRepository) : ViewModel() {
 
     private fun updateScore(team : Team) {
         teamRepository.updateTeam(team)
-        message.postValue("updated Team score")
+        message.setValue("updated Team score")
     }
 
     private fun getTeamScore(id : Int) : Team? {

@@ -22,6 +22,10 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 
 /**
+ *
+ * https://github.com/googlesamples/android-architecture/blob/dev-todo-mvvm-live
+ * /todoapp/app/src/main/java/com/example/android/architecture/blueprints/todoapp/SnackbarMessage.java
+ *
  * A SingleLiveEvent used for Snackbar messages. Like a {@link SingleLiveEvent} but also prevents
  * null messages and uses a custom observer.
  * <p>

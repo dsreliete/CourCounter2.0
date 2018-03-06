@@ -45,11 +45,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         })
 
         viewModel.scoreTeamA.observe(this, Observer {
-            value -> scoreTeamA.text = value!!.score.toString()
+            scoreTeamA.text = it!!.score.toString()
         })
 
         viewModel.scoreTeamB.observe(this, Observer {
-            value -> scoreTeamB.text = value!!.score.toString()
+            scoreTeamB.text = it!!.score.toString()
         })
     }
 
