@@ -5,19 +5,22 @@ android:
 components:
 - platform-tools
 - tools
-- build-tools-26.0.2
-- android-26
+# The BuildTools version used by your project
+- build-tools-$ANDROID_BUILD_TOOLS_VERSION
+# The SDK version used to compile your project
+- android-$ANDROID_API_LEVEL
 - android-22
 - sys-img-armeabi-v7a-android-22
 - extra-android-m2repository
 
-before_intall:
-- 'android-sdk-preview-license-.+'
-- 'android-sdk-license-.+'
-- 'google-gdk-license-.+'
+#before_intall:
+#- 'android-sdk-preview-license-.+'
+#- 'android-sdk-license-.+'
+#- 'google-gdk-license-.+'
 
-#before_install:
-#-yes | sdkmanager --licenses && sdkmanager --update
+before_script:
+- mkdir -p "$ANDROID_HOME/licenses"
+- cp ./google-licenses/* "$ANDROID_HOME/licenses/"
 
 #before_script:
 # Create and start emulator
