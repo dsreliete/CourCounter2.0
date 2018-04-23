@@ -16,8 +16,8 @@ licenses:
 - 'android-sdk-license-.+'
 - 'google-gdk-license-.+'
 
-before_install:
-yes | sdkmanager --licenses && sdkmanager --update
+#before_install:
+#yes | sdkmanager --licenses && sdkmanager --update
 
 before_script:
 # Create and start emulator
