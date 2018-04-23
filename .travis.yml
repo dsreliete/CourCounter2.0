@@ -11,10 +11,10 @@ components:
 - sys-img-armeabi-v7a-android-22
 - extra-android-m2repository
 
-licenses:
-- 'android-sdk-preview-license-.+'
-- 'android-sdk-license-.+'
-- 'google-gdk-license-.+'
+#licenses:
+#- 'android-sdk-preview-license-.+'
+#- 'android-sdk-license-.+'
+#- 'google-gdk-license-.+'
 
 #before_install:
 #-yes | sdkmanager --licenses && sdkmanager --update
