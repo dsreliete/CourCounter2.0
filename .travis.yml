@@ -14,7 +14,7 @@ components:
 
   - tools
 
-  - build-tools-24.0.2
+  - build-tools-26.1.0
 
   - android-22
 
@@ -30,14 +30,14 @@ before_script:
 
 # Create and start emulator
 
-- echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
+#- echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
+#
+#- emulator -avd test -no-skin -no-audio -no-window &
+#
+#- android-wait-for-emulator
+#
+#- adb shell input keyevent 82 &
 
-- emulator -avd test -no-skin -no-audio -no-window &
-
-- android-wait-for-emulator
-
-- adb shell input keyevent 82 &
 
 
-
-script: ./gradlew connectedAndroidTest
+script: ./gradlew build connectedCheck
