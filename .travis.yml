@@ -25,13 +25,16 @@ licenses:
 before_script:
 - mkdir -p "$ANDROID_HOME/licenses"
 - cp ./google-licenses/* "$ANDROID_HOME/licenses/"
-
-before_script:
-# Create and start emulator
-- echo android list targets
-
-- echo no | android create avd --force -n test -t android-26 --abi armeabi-v7a
+- echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a -c 32M
 - emulator -avd test -no-audio -no-window &
 - android-wait-for-emulator
+- sleep 180
+- adb devices
 - adb shell input keyevent 82 &
+#- echo android list targets
+#
+#- echo no | android create avd --force -n test -t android-26 --abi armeabi-v7a
+#- emulator -avd test -no-audio -no-window &
+#- android-wait-for-emulator
+#- adb shell input keyevent 82 &
 script: ./gradlew build connectedCheck
