@@ -2,8 +2,8 @@ language: android
 jdk: oraclejdk8
 env:
  global:
-    - ANDROID_API_LEVEL=26
-    - ANDROID_BUILD_TOOLS_VERSION=26.0.2
+    - ANDROID_API_LEVEL=22
+    - ANDROID_BUILD_TOOLS_VERSION=22.0.1
 sudo: false
 android:
   components:
@@ -14,7 +14,7 @@ android:
     - build-tools-$ANDROID_BUILD_TOOLS_VERSION
     # The SDK version used to compile your project
     - android-$ANDROID_API_LEVEL
-    - sys-img-armeabi-v7a-android-26
+    - sys-img-armeabi-v7a-android-22
     - extra-android-m2repository
     # Additional components
     - extra-google-google_play_services
@@ -22,7 +22,7 @@ android:
     - extra-android-m2repository
     # Specify at least one system image,
     # if you need to run emulator(s) during your tests
-    - sys-img-armeabi-v7a-addon-google_apis-google-26
+    - sys-img-armeabi-v7a-addon-google_apis-google-22
 
 licenses:
 - 'android-sdk-preview-license-.+'
@@ -32,7 +32,7 @@ licenses:
 before_script:
 - mkdir -p "$ANDROID_HOME/licenses"
 - cp ./google-licenses/* "$ANDROID_HOME/licenses/"
-- echo no | android create avd --force -n test -t android-26 --abi google_apis/armeabi-v7a
+- echo no | android create avd --force -n test -t android-22 --abi google_apis/armeabi-v7a
 - emulator -avd test -no-audio -no-window &
 - android-wait-for-emulator
 - adb shell input keyevent 82 &
